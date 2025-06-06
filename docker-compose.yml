@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongodb/mongodb-community-server
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: ./hospital-backend
+    container_name: hospital-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/hospitaldb
+
+  frontend:
+    build: ./hospital-frontend
+    container_name: hospital-frontend
+    ports:
+      - "4200:80" # Serve frontend on port 4200 via Nginx
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
