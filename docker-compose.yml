@@ -13,7 +13,7 @@ services:
     build: ./hospital-backend
     container_name: hospital-backend
     ports:
-      - "8080:8080"
+      - "8085:8080"
     depends_on:
       - mongo
     environment:

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent {
 
   onLogin(): void {
     const payload = { username: this.username, password: this.password };
-    this.http.post<any>('http://localhost:8080/api/auth/login', payload).subscribe({
+      this.http.post<any>(`${environment.apiUrl}/api/auth/login`, payload).subscribe({
       next: (res) => {
         if (res.success) {
           this.router.navigate(['/']);
