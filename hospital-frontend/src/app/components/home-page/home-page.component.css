@@ -1,0 +1,127 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css');
+
+.homepage-container {
+  background: linear-gradient(to right, #e0f7fa, #e1bee7);
+  padding: 40px;
+}
+
+.window-container {
+  animation: fadeIn 1s ease-in;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.window-box {
+  width: 250px;
+  height: 250px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+  padding: 30px;
+  cursor: pointer;
+  position: relative;
+}
+
+.window-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.patients {
+  background-color: #bbdefb;
+}
+
+.appointments {
+  background-color: #c8e6c9;
+}
+
+.patientprofile {
+  background-color: #ffe0b2;
+}
+
+.icon-large {
+  font-size: 3rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.window-box:hover .icon-large {
+  transform: scale(1.2);
+  color: #0d6efd;
+}
+
+.hospital-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  animation: popIn 1s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.icon-flash {
+  font-size: 3rem;
+  color: #0d6efd;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ambulance-animation {
+  overflow: hidden;
+  width: 100%;
+  height: 60px;
+  position: relative;
+  margin-top: 20px;
+}
+
+
+@keyframes drive {
+  0% {
+    left: -10%;
+  }
+  100% {
+    left: 110%;
+  }
+}
+
+
+.logout-btn {
+  background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: linear-gradient(135deg, #ff4e50, #f9d423);
+  transform: scale(1.05);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.logout-btn i {
+  font-size: 1.2rem;
+}

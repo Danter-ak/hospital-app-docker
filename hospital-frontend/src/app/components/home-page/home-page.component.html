@@ -1,0 +1,38 @@
+
+<div class="homepage-container d-flex flex-column justify-content-center align-items-center vh-100">
+  <div class="d-flex justify-content-end p-3">
+  <button class="btn logout-btn" (click)="logout()">
+    <i class="bi bi-box-arrow-right me-2"></i> Logout
+  </button>
+</div>
+<!-- Titre -->
+  <div class="title-container text-center mb-5">
+    <h1 class="hospital-title">
+      <i class="bi bi-hospital icon-flash me-2"></i> HOSPITAL
+    </h1>
+  </div>
+
+  <div class="window-container d-flex flex-wrap justify-content-center gap-5">
+
+    <!-- Patients -->
+    <div class="window-box patients" (click)="navigateTo('patients')">
+      <i class="bi bi-person-circle icon-large"></i>
+      <h3>Patients</h3>
+    </div>
+
+    <!-- Appointments -->
+    <div class="window-box appointments" (click)="navigateTo('appointments')">
+      <i class="bi bi-calendar-check icon-large"></i>
+      <h3>Appointments</h3>
+    </div>
+
+    <!-- Patient Profile -->
+    <div class="window-box patientprofile" (click)="navigateTo('patientprofile')">
+      <i class="bi bi-file-person icon-large"></i>
+      <h3>Patient Profile</h3>
+    </div>
+
+  </div>
+
+
+</div>

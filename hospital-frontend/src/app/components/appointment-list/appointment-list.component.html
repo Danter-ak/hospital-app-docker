@@ -1,0 +1,48 @@
+<div class="page-background">
+  <div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="fw-bold text-white">Appointment List</h2>
+      <button class="btn btn-light fw-semibold" routerLink="/appointments/add">
+        <i class="bi bi-plus-circle"></i> Add Appointment
+      </button>
+    </div>
+
+    <div *ngIf="appointments.length === 0" class="alert alert-light text-center">
+      No appointments found.
+    </div>
+
+    <div class="row g-4">
+      <div class="navigation-buttons mb-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+  <button class="btn nav-btn" routerLink="/">
+    <i class="bi bi-house-door-fill"></i> Home
+  </button> </div>
+      <div class="col-md-6 col-lg-4" *ngFor="let a of appointments">
+        <div class="card-box">
+          <h5 class="card-title">
+            <span class="icon-label">👤</span> {{ getPatientName(a.patientId) }}
+          </h5>
+          <p class="card-line">
+            <span class="icon-label">📅</span> <strong>Date:</strong>
+            {{ a.date | date: 'mediumDate' }}
+          </p>
+          <p class="card-line">
+            <span class="icon-label">⏰</span> <strong>Time:</strong> {{ a.date | date:'shortTime' }}
+          </p>
+          <p class="card-line">
+            <span class="icon-label">📝</span> <strong>Reason:</strong>
+            {{ a.reason || '—' }}
+          </p>
+
+          <div class="d-flex justify-content-end gap-2 mt-3">
+            <button class="btn btn-sm btn-outline-primary" [routerLink]="['/appointments/edit', a.id]">
+              <i class="bi bi-pencil"></i> Edit
+            </button>
+            <button class="btn btn-sm btn-outline-danger" (click)="deleteAppointment(a.id)">
+              <i class="bi bi-trash"></i> Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

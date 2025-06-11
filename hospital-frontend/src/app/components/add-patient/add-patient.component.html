@@ -1,0 +1,47 @@
+<div class="page-background">
+  <div class="container py-5">
+
+    <!-- Navigation buttons -->
+    <div class="navigation-buttons mb-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <button class="btn nav-btn" routerLink="/">
+        <i class="bi bi-house-door-fill"></i> Home
+      </button>
+      <button *ngIf="isEditMode !== undefined" class="btn nav-btn" [routerLink]="['/patients']">
+        <i class="bi bi-arrow-left-circle"></i> Back to Patient List
+      </button>
+    </div>
+
+    <!-- Card Form -->
+    <div class="card-box animate__animated animate__fadeIn">
+      <h4 class="text-center mb-4">
+        {{ isEditMode ? '📝 Edit Patient' : '➕ Add New Patient' }}
+      </h4>
+
+      <form (ngSubmit)="onSubmit()" #patientForm="ngForm">
+        <div class="mb-3">
+          <label for="nom" class="form-label">Nom</label>
+          <input type="text" id="nom" class="form-control input-glow" required [(ngModel)]="patient.nom" name="nom" />
+        </div>
+
+        <div class="mb-3">
+          <label for="prenom" class="form-label">Prénom</label>
+          <input type="text" id="prenom" class="form-control input-glow" required [(ngModel)]="patient.prenom" name="prenom" />
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" class="form-control input-glow" required [(ngModel)]="patient.email" name="email" />
+        </div>
+
+        <div class="mb-4">
+          <label for="age" class="form-label">Âge</label>
+          <input type="number" id="age" class="form-control input-glow" required [(ngModel)]="patient.age" name="age" />
+        </div>
+
+        <button type="submit" class="btn btn-success w-100 fw-semibold rounded-pill shadow">
+          <i class="bi bi-check-circle-fill me-2"></i> Save Patient
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

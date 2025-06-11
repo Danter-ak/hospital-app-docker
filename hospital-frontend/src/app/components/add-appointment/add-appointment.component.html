@@ -1,0 +1,49 @@
+<div class="page-background">
+  <div class="container py-5">
+
+    <!-- Navigation -->
+    <div class="navigation-buttons mb-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <button class="btn nav-btn" routerLink="/">
+        <i class="bi bi-house-door-fill"></i> Home
+      </button>
+      <button *ngIf="isEditMode !== undefined" class="btn nav-btn" [routerLink]="['/appointments']">
+        <i class="bi bi-arrow-left-circle"></i> Back to Appointments List
+      </button>
+    </div>
+
+    <!-- Card -->
+    <div class="card-box animate__animated animate__fadeIn">
+      <h4 class="text-center mb-4">
+        {{ isEditMode ? '🗓️ Edit Appointment' : '➕ Add Appointment' }}
+      </h4>
+
+      <form (ngSubmit)="onSubmit()" #form="ngForm">
+        <div class="mb-3">
+          <label for="patient" class="form-label">👤 Patient</label>
+          <select id="patient" class="form-select input-glow" required [(ngModel)]="appointment.patientId" name="patientId">
+            <option *ngFor="let p of patients" [value]="p.id">{{ p.nom }} {{ p.prenom }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="date" class="form-label">📅 Date</label>
+          <input type="date" id="date" class="form-control input-glow" required [(ngModel)]="appointment.date" name="date" />
+        </div>
+
+        <div class="mb-3">
+          <label for="time" class="form-label">⏰ Time</label>
+          <input type="time" id="time" class="form-control input-glow" required [(ngModel)]="appointment.time" name="time" />
+        </div>
+
+        <div class="mb-4">
+          <label for="description" class="form-label">📝 Description</label>
+          <textarea id="description" class="form-control input-glow" required [(ngModel)]="appointment.reason" name="description"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100 fw-semibold rounded-pill shadow">
+          <i class="bi bi-check-circle-fill me-2"></i> Save Appointment
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

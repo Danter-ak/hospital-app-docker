@@ -1,0 +1,33 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Appointment } from '../models/appointement';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AppointmentService {
+  private baseUrl = 'http://localhost:8080/api/appointments';
+
+  constructor(private http: HttpClient) {}
+
+  getAll(): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(this.baseUrl);
+  }
+
+  get(id: string): Observable<Appointment> {
+    return this.http.get<Appointment>(`${this.baseUrl}/${id}`);
+  }
+
+  create(data: Appointment): Observable<Appointment> {
+    return this.http.post<Appointment>(this.baseUrl, data);
+  }
+
+  update(id: string, data: Appointment): Observable<Appointment> {
+    return this.http.put<Appointment>(`${this.baseUrl}/${id}`, data);
+  }
+
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
+}
