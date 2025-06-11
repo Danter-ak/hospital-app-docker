@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+
+  backend:
+    image: monsieurplacard/hospital-backend:latest
+    deploy:
+      replicas: 5
+      update_config:
+        parallelism: 1
+        order: start-first
+    ports:
+      - "8085:8080"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://192.168.2.156:27017,192.168.2.157:27017,192.168.2.158:27017/hospitaldb?replicaSet=rs0
+    depends_on:
+      - mongo
+
+  frontend:
+    image: monsieurplacard/hospital-frontend:latest
+    deploy:
+      replicas: 5
+      update_config:
+        parallelism: 1
+        order: start-first
+    ports:
+      - "4200:80"
+    environment:
+      - API_URL=http://192.168.2.200:8085
+    depends_on:
+      - backend
+
