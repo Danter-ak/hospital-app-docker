@@ -26,6 +26,8 @@ services:
       - "4200:80" # Serve frontend on port 4200 via Nginx
     depends_on:
       - backend
+    environment:
+      - API_URL=http://localhost:8085
 
 volumes:
   mongo_data:
